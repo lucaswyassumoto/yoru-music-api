@@ -4,6 +4,8 @@ import com.yoru.wavy.entity.Usuario;
 import com.yoru.wavy.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -17,6 +19,11 @@ public class UsuarioController {
     @PostMapping("/cadastrar")
     public Usuario cadastrar(@RequestBody Usuario usuario){
         return usuarioService.cadastrar(usuario);
+    }
+
+    @GetMapping("/buscar-usuario")
+    public List<Usuario> listarPorNome(@RequestParam String nome){
+        return usuarioService.listarPorNome(nome);
     }
 
 }
